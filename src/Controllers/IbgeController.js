@@ -16,3 +16,19 @@ exports.getEstados = (req, res, next) => {
         res.status(200).send(response);
     })    
  };
+
+ //lista todos os municipios
+exports.getMunicipios = (req, res, next) => {
+    getJSON('https://servicodados.ibge.gov.br/api/v1/localidades/municipios', function(error, response){
+        res.status(200).send(response);
+    })    
+ };
+//lista os municipios pelo id do estado
+ exports.getMunicipiosById = (req, res, next) => {
+    let id = req.params.id;
+ 
+    getJSON('https://servicodados.ibge.gov.br/api/v1/localidades/estados/'+id+'/municipios', function(error, response){
+        res.status(200).send(response);
+    })  
+     
+ };
